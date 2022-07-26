@@ -1,0 +1,71 @@
+NAME: 'ms_l1loss_decay'
+MODEL:
+    
+TRAIN:
+    resume: False
+    if_valid: True
+    cache_path: '../caches/'
+    save_path: '../models/'
+    input_nc: 3
+    output_nc: 1
+    ngf: 32
+    pad: 0
+
+    loss: 'L1'
+    lambda_D: 10
+    kernel_size: 51
+
+    total_iters: 400000
+    warmup_iters: 0
+    base_lr: 0.001
+    end_lr: 0.0001
+    display_freq: 100
+    valid_freq: 100
+    save_freq: 1000
+    decay_iters: 100000
+    weight_decay: ~
+    power: 1.5
+
+    batch_size: 32
+    num_workers: 4
+    is_cuda: True
+
+    random_seed: 555  # -1 is none
+
+DATA:
+    scale_range: 0
+    patch_size: 
+        - 256
+        - 256
+    folder_name: '../data/training'
+    train_txt: 'train_data.txt'
+    valid_txt: 'valid_data.txt'
+    invalid_border: 50
+    black_background: True
+    
+    AUG:
+        random_fliplr: True
+        random_flipud: True
+        random_flipz: True
+        random_rotation: True
+        swap: True
+        color_jitter: False
+        COLOR:
+            brightness: 0.2
+            contrast: 0.2
+            saturation: 0.2
+        elastic_trans: False
+        ELASTIC:
+            alpha_range: 100
+            sigma: 10
+            shave: 20
+        gauss_noise: False
+        GAUSS:
+            gauss_mean: 0
+            gauss_sigma: 0.001
+
+TEST:
+    pad: 0
+    model_name: '2020-05-24--04-49-11_ms_l1loss_decay'
+    folder_name: '../data/training'
+    valid_txt: 'train_data.txt'

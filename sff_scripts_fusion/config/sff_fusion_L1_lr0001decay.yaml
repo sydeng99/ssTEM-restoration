@@ -1,0 +1,77 @@
+NAME: 'sff_fusion_L1_lr0001decay'
+MODEL:
+    
+TRAIN:
+    resume: False
+    if_valid: True
+    cache_path: '../caches/'
+    save_path: '../models/'
+    input_nc: 6
+    output_nc: 1
+    ngf: 32
+    pad: 0
+
+    loss: 'L1'
+    lamda: 0.01
+    n: 9
+    flownet_id: 'unfolding_fusionnet.ckpt'
+    flownet_path: '../trained_models/unfolding_fusionnet'
+
+    total_iters: 400000
+    warmup_iters: 0
+    base_lr: 0.0001
+    end_lr: 0.00001
+    display_freq: 100
+    valid_freq: 100
+    save_freq: 1000
+    decay_iters: 100000
+    weight_decay: ~
+    power: 1.5
+
+    batch_size: 32
+    num_workers: 4
+    is_cuda: True
+
+    random_seed: 555  # -1 is none
+
+DATA:
+    scale_range: 0
+    gt_line: False
+    patch_size: 
+        - 400
+        - 400
+    folder_name: '../data/training'
+    train_txt: 'train_data.txt'
+    interp_train_txt: 'interp_train_data.txt'
+    valid_txt: 'valid_sff_data_enhance3.txt'
+    interp_valid_txt: 'interp_valid_data.txt'
+    invalid_border: 50
+    black_background: True
+    
+    AUG:
+        random_fliplr: True
+        random_flipud: True
+        random_flipz: True
+        random_rotation: True
+        swap: False
+        color_jitter: True
+        COLOR:
+            brightness: 0.5
+            contrast: 0.5
+            saturation: 0.5
+        elastic_trans: False
+        ELASTIC:
+            alpha_range: 100
+            sigma: 10
+            shave: 20
+        gauss_noise: False
+        GAUSS:
+            gauss_mean: 0
+            gauss_sigma: 0.001
+
+TEST:
+    pad: 0
+    model_name: '2020-06-17--09-48-14_sff_fusion_L1_lr0001decay'
+    folder_name: '../data/training'
+    valid_txt: 'cremia+_data.txt'
+    interp_valid_txt: 'valid_interp_data.txt'
