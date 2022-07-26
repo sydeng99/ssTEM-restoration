@@ -1,0 +1,36 @@
+data_folder: '../data/SP_train_data/'
+data_txt: '../data/SP_train_data.txt'
+mode: 'b' 
+patch_size: 512
+if_rotate: True
+if_bdadjust: True
+if_use_vfiImg: False
+
+batch_size: 1
+if_multiGPU: False
+if_pretrained: True
+if_pretrained_vfi: True
+vfi_lr_weight: 1.0e-20
+if_pretrained_denoise: True
+denoise_lr_weight: 1.0e-6
+if_pretrained_fusion: False
+resume_path: '../SP_exp/models/'
+vfi_last_iter: 49000
+denoise_last_iter: 49000
+mGPUtrain_sGPUresume: False
+
+network_correction: Unet
+base_lr: 0.0001
+n_epochs: 300
+epoch: 0
+decay_epoch: 50
+gan_weight: 0
+loss_type: 'L1'
+if_fusion_loss_only: False
+
+cuda: True
+input_nc: 1
+save_freq: 1000
+valid_freq: 100
+cache_path: '../SP_exp/cache_fusion/'
+save_path: '../SP_exp/model_fusion/'

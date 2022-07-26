@@ -1,0 +1,32 @@
+data_folder: '../data/SP_train_data/'
+data_txt: '../data/sp_train_data.txt'
+gpu: '1'
+if_use_all_GPUs: False
+
+patch_size: 512
+PAD: 0
+if_rotate: True
+if_bdadjust: True
+if_use_vfiImg: False
+
+batch_size: 1
+if_pretrained: False
+if_pretrained_correc: False
+resume_path: ''
+correc_last_iter:
+
+network: UNet
+base_lr: 0.0001
+n_epochs: 30
+epoch: 0
+decay_epoch: 50
+gan_weight: 0
+loss_type_restore: 'L1'
+
+cuda: True
+input_nc: 1
+save_freq: 1000
+valid_freq: 100
+only_save_weights: True
+cache_path: '../SP_exp/cache_correc/'
+save_path: '../SP_exp/model_correc/'
