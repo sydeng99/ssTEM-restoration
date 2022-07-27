@@ -220,14 +220,29 @@ python test_fusion.py -mp ../SP_models/ -dp ../SP_testdata/ -im1 001.png -im2d 0
 
 
 
-
 ## Network configuration
 
- Our framework consists of three modules, i.e., interpolation, correction, and fusion. The interpolation module is built upon the kernel prediction network (KPN)[1]. The correction module and the fusion module are built upon the U-Net [2].
+ Our framework consists of three modules, i.e., interpolation, correction, and fusion. The interpolation module is built upon the kernel prediction network (KPN)[1]. The correction module and the fusion module are built upon the U-Net [2]. More details can be found in Table 1-3.
 
 <img src="res/interp_net.png" style="zoom: 50%;" />
 
+Table 1. Network structure of interpolation module
 
+<img src="res/interp_net2.png" alt="image-20220620122352016" style="zoom:50%;" />
+
+
+
+Table 2. Network structure of correction module
+
+<img src="res/corre_net1.png" style="zoom: 80%;" />
+
+![](res/corre_net2.png)
+
+
+
+Table 3. Network structure of fusion module
+
+<img src="res/fusion_net.png" style="zoom:50%;" />
 
 
 
